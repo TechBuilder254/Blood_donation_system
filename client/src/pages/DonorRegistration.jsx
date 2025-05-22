@@ -20,7 +20,7 @@ const DonorRegister = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await axios.post("http://localhost:3000/api/register-donor", formData); // Replace with your actual endpoint
       console.log("Server response:", response.data);
@@ -39,7 +39,7 @@ const DonorRegister = () => {
       alert("Failed to register. Please try again.");
     }
   };
-  
+
   return (
     <section className="donor-registration container">
       <h2>Register as a Blood Donor</h2>
@@ -85,8 +85,9 @@ const DonorRegister = () => {
             required
           />
         </div>
+
         <div className="form-group">
-          <label>Age </label>
+          <label>Age</label>
           <input
             type="number"
             name="Age"

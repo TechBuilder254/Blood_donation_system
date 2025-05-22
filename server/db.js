@@ -9,7 +9,7 @@ console.log('Database Configuration:', {
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   database: process.env.DB_NAME,
-  port: process.env.DB_PORT || 3307,
+ 
 });
 
 const db = mysql.createConnection({
@@ -17,7 +17,6 @@ const db = mysql.createConnection({
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  port: process.env.DB_PORT || 3307,
 });
 
 db.connect((err) => {

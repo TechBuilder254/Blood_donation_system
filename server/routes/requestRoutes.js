@@ -94,4 +94,31 @@ router.delete('/delete-request/:id', (req, res) => {
   });
 });
 
+
+// Get daily blood requests
+router.get('/daily-requests', (req, res) => {
+  const sql = `
+    SELECT DATE(requested_at) as date, COUNT(*) as count
+    FROM blood_requests
+    GROUP BY DATE(requested_at)
+    ORDER BY date ASC
+  `;
+  db.query(sql, (err, results) => {
+    if (err) return res.status(500).json([]);
+    res.json(results);
+  });
+});
+
+// Get blood group stats for requests
+router.get('/blood-type-stats', (req, res) => {
+  const sql = `
+    SELECT bloodgroup as bloodType, COUNT(*) as requests
+    FROM blood_requests
+    GROUP BY bloodgroup
+  `;
+  db.query(sql, (err, results) => {
+    if (err) return res.status(500).json([]);
+    res.json(results);
+  });
+});
 module.exports = router;
